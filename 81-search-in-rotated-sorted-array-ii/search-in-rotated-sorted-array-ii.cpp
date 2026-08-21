@@ -1,16 +1,15 @@
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {
-       int l=0,r=nums.size()-1,mid=(l+r)/2;
-       while(nums[l]==nums[mid]&&nums[mid]==nums[r]&&l<r&&nums[mid]!=target){
-        l++;
-        r--;
-        mid=(l+r)/2;
-       }
+       int l=0,r=nums.size()-1;
        while(l<=r){
-        mid=(l+r)/2;
+        int mid=(l+r)/2;
         if(nums[mid]==target){
             return true;
+        }
+        else if(nums[l]==nums[mid]&&nums[mid]==nums[r]){
+            l++;
+            r--;
         }
         else if(nums[l]<=nums[mid]){
             if(target<=nums[mid]&&target>=nums[l])
