@@ -2,14 +2,14 @@ class NumArray {
     int[] nums;
     public NumArray(int[] nums) {
         this.nums=nums;
+        for (int i = 1; i < this.nums.length; ++i)
+            this.nums[i] += this.nums[i-1]; 
     }
     
     public int sumRange(int left, int right) {
-       int sum=0;
-       for(int i=left;i<=right;i++){
-        sum+=nums[i];
-       } 
-       return sum;
+       if(left==0) return nums[right];
+       else return nums[right] - nums[left-1];
+       
     }
 }
 
